@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film & Media Portfolio</title>
+    <style>
+        /* Base styles and colors */
+        :root {
+            --main-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --accent: #f8b400;
+            --accent-hover: #ffcb52;
+            --link: #4da6ff;
+            --border: #444;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Layout structure */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--accent);
+            margin: 40px 0;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        
+        /* Section Styling */
+        .category-header {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            margin: 50px 0 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            background-color: var(--card-bg);
+            margin-bottom: 40px;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section h2 {
+            text-align: left;
+            margin-top: 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        /* Media elements */
+        .media-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .media-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .media-content {
+                flex: 1;
+            }
+            
+            .poster-container {
+                flex: 0 0 40%;
+            }
+        }
+        
+        .poster {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .poster:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Lists and quotes */
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid var(--accent);
+            padding: 10px 15px;
+            margin: 20px 0;
+            background-color: rgba(248, 180, 0, 0.1);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Links */
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+        }
+        
+        /* Awards section */
+        .awards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .nav-links {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Film Portfolio</div>
+            <div class="nav-links">
+                <a href="#collaborative">Collaborative</a>
+                <a href="#mike">Mike's Work</a>
+                <a href="#kevin">Kevin's Work</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Film & Media Portfolio</h1>
+        
+        <h2 id="collaborative" class="category-header">Collaborative Work – Mike Cerisano, Arielle Murphy & Kevin Burns</h2>
+        
+        <div class="section">
+            <h2>Henchman <span style="font-size: 0.8em; color: #ccc;">(Director, Writer)</span></h2>
+            <div class="media-container">
+                <div class="media-content">
+                    <p>A dark comedy-drama set in Gotham City, following a low-level henchman who dreams of becoming a top-tier villain—only to have his plans unravel when his wife decides she's had enough of his life of crime.</p>
+                <p>In this project, I handled all aspects of direction and screenwriting, working closely with the team to bring this dark comedy vision to life.</p>
+                    <p><strong>Status:</strong> Near Completion – Preparing for Festival Submissions</p>
+                    <a href="https://vimeo.com/1049122523/81b5dac1ee" target="_blank" class="btn">Watch Henchman</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Killing Time <span style="font-size: 0.8em; color: #ccc;">(Director, Producer)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://i.postimg.cc/rm1HwyM6/unnamed.jpg" class="poster" alt="Killing Time Poster">
+            </div>
+            <div>
+                <p>Winner of Honorable Mention at AGBO's <em>No Sleep 'Til</em> Fest 2023, judged by the Russo Brothers (<em>Avengers: Endgame</em>).</p>
+                <p>As director and producer, I led the creative vision and managed all aspects of production from concept through final edit.</p>
+                <a href="https://vimeo.com/1037098230/f2aff03c6b" target="_blank" class="btn">Watch Killing Time</a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Unsteady <span style="font-size: 0.8em; color: #ccc;">(Director, Cinematographer)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://i.postimg.cc/762BQHfG/Unsteady-Poster.jpg" class="poster" alt="Unsteady Poster">
+            </div>
+            <div>
+                <div class="quote">
+                    <p>"Our committee was impressed by your work on <em>Unsteady</em>—your talents stand out. Brilliant work!" – <em>Festigious Film Festival</em></p>
+                </div>
+                
+                <h3>Awards & Festival Selections:</h3>
+                <div class="awards">
+                    <div>
+                        <strong>Winner:</strong>
+                        <ul>
+                            <li>Los Angeles Film Awards (LAFA)</li>
+                            <li>Crown Point International Film Festival</li>
+                            <li>Oniros Film Awards</li>
+                            <li>New York International Film Awards (NYIFA)</li>
+                            <li>Top Shorts Film Festival</li>
+                            <li>Festigious International Film Festival</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Selections:</strong>
+                        <ul>
+                            <li><strong>Nominee:</strong> Pasadena International Film Festival</li>
+                            <li><strong>Official Selection:</strong> Bare Bones International Film & Music Festival</li>
+                            <li><strong>Official Selection:</strong> Cannes Short Film Festival</li>
+                            <li><strong>Official Selection:</strong> FilmHaus Berlin</li>
+                            <li><strong>Official Selection:</strong> Big Apple Film Festival</li>
+                            <li><strong>Official Selection:</strong> International New York Film Festival (INYFF)</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://vimeo.com/839922166?share=copy" target="_blank" class="btn">Watch Unsteady</a>
+            </div>
+        </div>
+        
+        <h2 id="mike" class="category-header">Mike Cerisano's Independent Work</h2>
+        
+        <div class="section">
+            <h2>After Life <span style="font-size: 0.8em; color: #ccc;">(Writer, Director, Producer)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://m.media-amazon.com/images/M/MV5BMDBjMTAzYzEtNzVkMi00YmQyLTkzMDEtZjExMWI1MGMwNDhlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" class="poster" alt="After Life Poster">
+            </div>
+            <div>
+                <p>A comedy pilot about the lives of ghosts and a television crew that hunts them. Many of the actors in <em>After Life</em> have since gone on to have prolific careers in Hollywood.</p>
+                
+                <h3>Official Selections:</h3>
+                <ul>
+                    <li>New Faces New Voices</li>
+                    <li>North Hollywood CineFest</li>
+                    <li>Depth of Field International Film Festival</li>
+                    <li>New York Lift-Off Film Festival</li>
+                    <li>Transparent Film Festival</li>
+                </ul>
+                
+                <h3>Semi-Finalist:</h3>
+                <ul>
+                    <li>Flickers' Rhode Island International Film Festival</li>
+                </ul>
+                
+                <h3>Finalist:</h3>
+                <ul>
+                    <li>Deep Focus Film Festival</li>
+                    <li>Hollywood Dreams International Film Festival</li>
+                </ul>
+                
+                <a href="https://m.imdb.com/title/tt12099426/?ref_=nm_ov_bio_lk" target="_blank" class="btn">View on IMDb</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Insomnia <span style="font-size: 0.8em; color: #ccc;">(Director of Photography, Uncredited Writer/Producer)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGM2ZTE3MGMtODc3MC00MzI5LTk0OTgtYjRiZTk0ZWY0ZWFkXkEyXkFqcGc@._V1_.jpg" class="poster" alt="Insomnia Poster">
+            </div>
+            <div>
+                <p><em>Insomnia</em> is a dark comedy web series that explores complex themes through the life of Nikhil, a bisexual Indian-American writer and escort.</p>
+                <p>I served as the Director of Photography for this critically acclaimed series, creating the visual language that brought these complex characters to life. I also contributed significantly to the writing and production, though remained uncredited in these roles.</p>
+                
+                <h3>Critical Reception:</h3>
+                <div class="quote">
+                    <p>"You learn more about these characters in the short episodes than you do in many of the TV shows trending on Netflix." – <em>Sharan Dhaliwal, Burnt Roti</em></p>
+                </div>
+                <div class="quote">
+                    <p>"Addresses the concept of bi-erasure and its presence in our society and communities." – <em>Brown Girl Magazine</em></p>
+                </div>
+                <div class="quote">
+                    <p>"Balances [heavy scenes] expertly with his character Nikhil continuing to narrate through the stress." – <em>The Nerdy Girl Express</em></p>
+                </div>
+                
+                <a href="https://www.youtube.com/watch?v=ZioNxd71eCI&t=2s&ab_channel=Revry" target="_blank" class="btn">Watch Trailer</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Commercial Production Work <span style="font-size: 0.8em; color: #ccc;">(Co-Founder)</span></h2>
+                            <p>Mike co-founded <strong>Zipline Media</strong>, a commercial production company that has been instrumental in supporting independent projects by providing equipment and resources.</p>
+                <p>As co-founder, I've overseen numerous commercial productions that have helped fund our independent creative projects while building relationships with industry professionals and clients.</p>
+            <a href="https://www.zipline.media/" target="_blank" class="btn">Visit Zipline Media</a>
+        </div>
+
+        <h2 id="kevin" class="category-header">Kevin Burns' Independent Work</h2>
+        
+        <div class="section">
+            <h2>A Shot in the Dark (2017) <span style="font-size: 0.8em; color: #ccc;">(Producer & Camera Operator)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://m.media-amazon.com/images/M/MV5BNjhiYmIyMzYtNmI0ZS00Y2QyLWJmNWUtODFlM2ExM2ZhOGMxXkEyXkFqcGc@._V1_.jpg" class="poster" alt="A Shot in the Dark Poster">
+            </div>
+            <div>
+                <p>Kevin served as <strong>Producer & Camera Operator</strong> on this feature documentary that garnered multiple awards and nominations. He was instrumental in securing funding, managing production logistics, and capturing key footage throughout the filmmaking process.</p>
+                <a href="https://m.imdb.com/title/tt6082610/?ref_=ttawd_ov_i" target="_blank" class="btn">View on IMDb</a>
+                <a href="https://m.imdb.com/title/tt6082610/awards/?ref_=tt_awd" target="_blank" class="btn">See Awards</a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Cricket (2021) <span style="font-size: 0.8em; color: #ccc;">(Producer)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://m.media-amazon.com/images/M/MV5BYzY4NzBjYzktNmQ2OS00YjY1LTg2M2UtZDVhZTI1ODE0MGZmXkEyXkFqcGc@._V1_.jpg" class="poster" alt="Cricket Poster">
+            </div>
+            <div>
+                <p>Kevin took on the role of <strong>Producer</strong> for this award-winning short thriller. His contributions included securing locations, managing the production budget, and coordinating with festival submissions, which resulted in multiple award wins and recognition across film festivals.</p>
+                <a href="https://www.imdb.com/title/tt14528052/" target="_blank" class="btn">View on IMDb</a>
+                <a href="https://www.imdb.com/title/tt14528052/awards/?ref_=tt_awd" target="_blank" class="btn">See Awards</a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ryde <span style="font-size: 0.8em; color: #ccc;">(Producer & Crew)</span></h2>
+            <div class="poster-container" style="text-align: center; margin-bottom: 20px;">
+                <img src="https://i.postimg.cc/yx2FZcVk/IMG-6582.jpg" class="poster" alt="Ryde Poster">
+            </div>
+            <div>
+                <p>As <strong>Producer & Crew</strong> for this comedy series pilot about a ride-sharing app driver, Kevin handled budget management, talent coordination, and on-set logistics while also filling crucial crew roles. The project is currently being pitched to HBO and Netflix producers.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Film & Media Portfolio. All rights reserved.</p>
+    </footer>
+    
+    <!-- Back to top button -->
+    <a href="#top" class="back-to-top">↑</a>
+</body>
+</html>
